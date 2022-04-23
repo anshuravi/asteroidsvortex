@@ -1,8 +1,10 @@
 html, body {
   margin: 0;
-  background:url(
-data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAACBJREFUGFdjZGBg+M/AwMDIgAYwBGDyREvAjSVaB9wJAM+bAgclldMqAAAAAElFTkSuQmCC
-   ) repeat;
+   background-image: url("moon.jpg");
+  background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;
+background-size: 100%;
 }
 
 canvas {
