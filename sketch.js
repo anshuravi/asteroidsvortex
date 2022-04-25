@@ -2,6 +2,7 @@
 
 // Define the gameState variable & set it to the desired inital value.
 let gameState = 'title';
+let fontRegular;
 let canvas;
 let landscape;
 let bgR = 100;
@@ -30,6 +31,7 @@ function preload (){
   vortex = loadImage('vortex.gif')
   portal = loadImage('portal.gif')
   landscape = loadImage('landscape1.jpg')
+   fontRegular = loadFont('Play-Regular.ttf');
   time = loadImage('purplefire.gif')
     for(let i = 0; i < 8; i++){
     picture[i]=loadImage("images/image"+(i+1)+".jpg");
@@ -39,11 +41,12 @@ function preload (){
   particleImage = loadImage('asteroids_particle.png');
   img = loadImage("firevortex.gif");
 }
-// Set up 
+// Set up
 function setup() {
   canvas = createCanvas(500, 500);
   canvas.parent('sketch-holder');
   frameRate(60);
+  textFont(fontRegular);
   bgImg = landscape;
 
   ship = createSprite(width/2, height/2);
@@ -66,14 +69,14 @@ function setup() {
 }
 
 /* The draw loop content is drawn depending on the current value
-of gameState. The 'switch' function here is replacing what could 
+of gameState. The 'switch' function here is replacing what could
 be an 'if-else' statement. */
 function draw() {
   // The switch call expects to find a varible within the parentheses.
   switch (gameState) {
     /* Each 'screen' that you want should be defined with a word,
-    this word will correspond to a 'case' as seen below. The case 
-    will be followed by all of functions you want within that screen 
+    this word will correspond to a 'case' as seen below. The case
+    will be followed by all of functions you want within that screen
     and end with a 'break;'. */
     case 'title':
       titleScreen();
@@ -88,8 +91,8 @@ function draw() {
 }
 
 /* Key release listener for starting game while on the title and game
-over screens and changing the background color on the main game screen. 
-Here we can see how the variable 'gameState' gets changed to trigger a 
+over screens and changing the background color on the main game screen.
+Here we can see how the variable 'gameState' gets changed to trigger a
 new screen to be displayed. */
 function keyReleased() {
   if (gameState === 'title' || gameState === 'gameover') {
@@ -101,28 +104,26 @@ function keyReleased() {
     }
   } else if (gameState === 'lvl1') {
     if (key === 's' || key === 'S' ) {
-      bgR = random(255);
-      bgG = random(255);
-      bgB = random(255);
+
     } else if(key == "R" || key == "r"){
     mr = int(random(picture.length));
     bgImg = picture[mr];
     console.log(picture[mr]);
   }
-  } 
-  
+  }
+
 }
 
 // Function for rendering the title screen.
 function titleScreen() {
  background(portal);
       stroke(255);
-  strokeWeight(5)
+  strokeWeight(4.5)
   fill(155, 66, 245);
   textSize(45);
   textAlign(CENTER);
   text('Asteroids of the Vortex', width*0.5, height*0.33);
-  textSize(25);
+  textSize(35);
   text('Press "S" To Start Game', width*0.5, height*0.66);
 }
 
@@ -135,20 +136,20 @@ function gameStage1() {
     timer --;
   }
   if (timer == 0) {
-    gameState = 'gameover'; 
+    gameState = 'gameover';
   }
 function keyPressed(){
-  
+
 }
    textAlign(CENTER, CENTER);
   textSize(100);
   fill(155, 66, 245)
   stroke(255);
-  strokeWeight(5)
+  strokeWeight(4.5)
   text(timer, width/2, height/2);
   stroke(255);
   fill(155, 66, 245);
-  strokeWeight(5)
+  strokeWeight(4.5)
   textSize(50);
   textAlign(CENTER);
   text('Destroy the asteroids!', width*0.5, height*0.1);
@@ -158,10 +159,10 @@ function keyPressed(){
   text('Move with the arrow keys!', width*0.5, height*0.85);
   textSize(30);
   text('Press "R" to travel through time.', width*0.5, height*0.95);
-  
+
   stroke(255);
   fill(255);
-  
+
   for(var i=0; i<allSprites.length; i++) {
     var s = allSprites[i];
     if(s.position.x<-MARGIN) s.position.x = width+MARGIN;
@@ -216,9 +217,9 @@ function keyPressed(){
 
   drawSprites();
 }
-  
- 
- 
+
+
+
 
 // Function for rendering game over screen.
 function gameOver() {
@@ -228,7 +229,5 @@ function gameOver() {
   strokeWeight(5)
   textSize(75);
   textAlign(CENTER);
-  text('GAME OVER', width*0.5, height*0.33);
-  textSize(25);
-  text('Press "S" To Restart Game', width*0.5, height*0.66);
+  text('GAME OVER', width*0.5, height*0.55);
 }
