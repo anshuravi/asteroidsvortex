@@ -6,6 +6,12 @@ html, body {
 background-attachment: fixed;
 background-position: center;
 background-size: 100%;
+font-family: 'Play', sans-serif;
+
+}
+p {
+  /* Center horizontally*/
+  text-align: center;
 }
 
 canvas {
